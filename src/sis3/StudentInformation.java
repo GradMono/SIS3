@@ -459,7 +459,6 @@ JOptionPane.showMessageDialog(null, e);
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Desktop\\SIS2\\imgs\\search.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 30, 50));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -477,7 +476,7 @@ JOptionPane.showMessageDialog(null, e);
         jScrollPane2.setViewportView(jPanel1);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(10, 140, 680, 580);
+        jScrollPane2.setBounds(10, 140, 680, 570);
 
         jLabel11.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel11.setText("Email:");
@@ -579,6 +578,7 @@ try{
       pst.setString(10, ps1.getText());
       pst.setString(11, it206.getText());
       pst.setString(12, ps2.getText());
+      
       
       
       pst.execute();
@@ -696,6 +696,23 @@ try{
         UpdateButton.setEnabled(false);
         jButton3.setEnabled(false);
         select = false;
+        
+        Email email = new SimpleEmail();
+        email.setHostName("smtp.mail.yahoo.com");
+        email.setSmtpPort(465);
+        email.setAuthenticator(new DefaultAuthenticator("testing_account7@yahoo.com", "dummyaccount1234567"));
+        email.setSSLOnConnect(true);
+    try {
+        email.setFrom("user@gmail.com");email.setSubject("TestMail");
+        email.setMsg("This is a test mail ... :-)");
+        email.addTo("testinga047@gmail.com");
+        email.send();
+    } catch (EmailException ex) {
+        Logger.getLogger(StudentInformation.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        
+        
+        
        }catch(SQLException | HeadlessException e){
        JOptionPane.showMessageDialog(null, e);
 
