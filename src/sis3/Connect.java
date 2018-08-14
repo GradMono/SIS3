@@ -22,7 +22,7 @@ public class Connect {
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts","root","");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://162.217.144.39:3306/remdb","ivan4103","41032018");
              JOptionPane.showMessageDialog(null,"Connection Established");
             return conn;
         }catch (Exception e){

@@ -9,7 +9,6 @@ import java.io.FileOutputStream;
 import java.sql.*; 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
-import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
 import java.awt.Desktop;
 import java.awt.HeadlessException;
 import java.io.File;
@@ -24,8 +23,14 @@ import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 import java.io.InputStream;
 import java.io.FileInputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
+import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.Email;
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.SimpleEmail;
 
 /**
  *
@@ -610,6 +615,23 @@ try{
         select = false;
       JOptionPane.showMessageDialog(null, "Saved");
       Update_Table_StudentInfo();
+      
+        Email email = new SimpleEmail();
+        email.setHostName("smtp.mail.yahoo.com");
+        email.setSmtpPort(465);
+        email.setAuthenticator(new DefaultAuthenticator("testing_account7@yahoo.com", "dummyaccount1234567"));
+        email.setSSLOnConnect(true);
+    try {
+        email.setFrom("user@gmail.com");email.setSubject("TestMail");
+        email.setMsg("This is a test mail ... :-)");
+        email.addTo("ivanortiz.miyens@gmail.com");
+        email.send();
+    } catch (EmailException ex) {
+        Logger.getLogger(StudentInformation.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        
+ 
+      
       }catch(SQLException | HeadlessException e){
       JOptionPane.showMessageDialog(null, e);
       }
