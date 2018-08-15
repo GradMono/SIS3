@@ -616,19 +616,7 @@ try{
       JOptionPane.showMessageDialog(null, "Saved");
       Update_Table_StudentInfo();
       
-        Email email = new SimpleEmail();
-        email.setHostName("smtp.mail.yahoo.com");
-        email.setSmtpPort(465);
-        email.setAuthenticator(new DefaultAuthenticator("testing_account7@yahoo.com", "dummyaccount1234567"));
-        email.setSSLOnConnect(true);
-    try {
-        email.setFrom("user@gmail.com");email.setSubject("TestMail");
-        email.setMsg("This is a test mail ... :-)");
-        email.addTo("ivanortiz.miyens@gmail.com");
-        email.send();
-    } catch (EmailException ex) {
-        Logger.getLogger(StudentInformation.class.getName()).log(Level.SEVERE, null, ex);
-    }
+ 
         
  
       
@@ -698,8 +686,9 @@ try{
         select = false;
         
         Email email = new SimpleEmail();
-        email.setHostName("gmail.mail.yahoo.com");
-        email.setSmtpPort(587);
+        //email.setHostName("gmail.mail.yahoo.com");
+        email.setHostName("smtp.gmail.com");
+        email.setSmtpPort(465);
         email.setAuthenticator(new DefaultAuthenticator("testing_account7@yahoo.com", "dummyaccount1234567"));
         email.setSSLOnConnect(true);
     try {
@@ -709,6 +698,7 @@ try{
         email.send();
     } catch (EmailException ex) {
         Logger.getLogger(StudentInformation.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("AYAW");
     }
         
         
