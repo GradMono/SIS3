@@ -698,8 +698,8 @@ try{
         select = false;
         
         Email email = new SimpleEmail();
-        email.setHostName("smtp.mail.yahoo.com");
-        email.setSmtpPort(465);
+        email.setHostName("gmail.mail.yahoo.com");
+        email.setSmtpPort(587);
         email.setAuthenticator(new DefaultAuthenticator("testing_account7@yahoo.com", "dummyaccount1234567"));
         email.setSSLOnConnect(true);
     try {
